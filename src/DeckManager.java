@@ -56,6 +56,8 @@ public abstract class DeckManager {
         DeckManager.init();
     }
 
+    // Originally this was it's own class, outside of DeckManager. But since Main only uses it once and it makes more sense
+    // as a subclass of DeckManager, I figured it would be fine to put it in here
     /**
      * Card containing name (i.e. "7 of Diamonds") and value (i.e. "7 of Diamonds" would have a value of 7)
      */

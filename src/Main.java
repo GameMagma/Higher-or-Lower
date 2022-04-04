@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
-    static DeckManager.Card playerCard, aiCard;
+    static Scanner sc = new Scanner(System.in); // Input
+    static DeckManager.Card playerCard, aiCard; // Holds the player's card and the AI's card (respectively)
 
     public static void main(String[] args) {
         DeckManager.init(); // Fills the deck with cards - you absolutely NEED to call this before doing anything with the deck
@@ -20,8 +20,8 @@ public class Main {
         /* Get and compare card values */
 
         // 1 = Lower, 2 = the same, 3 = higher
-        int correctAnswer;
-        int playerAnswer = 0;
+        int correctAnswer; // Results of the comparison, in int form (to make it easier to test against)
+        int playerAnswer = 0; // The player's answer, converted to int
 
         // Determine player answer and reassign choice to use later. Little icky, but whatever
         if (choice.equals("higher") || choice.equals("h") || choice.equals("high")) {
@@ -35,7 +35,8 @@ public class Main {
         else { // If they didn't enter any of these, then we don't know what they wanted, so just stop the program.
             System.out.println("Invalid entry entered. Stopping program.");
             System.exit(-1); // Exits with error code -1, signaling something went wrong.
-        }
+        } // If I wanted to do a little more, I would suggest putting this in a loop so they could keep trying, or even
+        // doing error handling. But I doubt that it's going to matter, unless people want to do it just to learn.
 
         // Determine correct answer
         if (aiCard.getValue() > playerCard.getValue()) { correctAnswer = 3; } // Higher
