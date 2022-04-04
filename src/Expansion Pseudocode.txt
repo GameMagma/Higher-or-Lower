@@ -1,0 +1,13 @@
+Goal: Add multiple options for opponents: Dealer mode (Current program), 2-player against AI, 2-player against person as
+well as a loop and points to keep the game going
+
+2-Player mode - Both players take turns guessing whether the next card dealt is higher or lower. How it works:
+1. Player 1 is dealt a card. They guess whether the next card is higher or lower.
+2. Player 2 is dealt a card. Player 1 gains or loses a point based on the value. Player 2 guesses higher or lower.
+3. Player 1 is dealt a card. Player 2 gains or loses a point based on the value. Player 1 guesses higher or lower.
+Repeat until program is stopped, or if there's a point goal, until they reach that.
+
+2-Player mode - Person: Play against live opponent by passing controls to them when it's their turn
+2-Player mode - AI: AI that randomly guesses higher or lower.
+
+Points can be stored in main and displayed each turn. We can either set a goal, have the players set a goal, or have no goal.
