@@ -1,0 +1,27 @@
+Gameplay (I may be wrong about the role of the AI, but this is my best guess as to the right answer):
+- User and AI are dealt 1 card each.
+- The AI shows the card to the player and asks if the card the player has is higher or lower
+- If the player guesses correctly, they win. If they guess incorrectly, they lose. If the cards are equal values, it's a tie.
+
+Now, the AI might be a second player (as in, one that has the potential of beating you), in which case they would also
+have to guess. This would be pretty easy to do though: just have the AI have a turn like the player, then have it guess
+a random integer between 1-13 (inclusive).
+
+Internal Process (Using the AI):
+1. DeckManager creates and fills deck of cards (Function called in Main/Told to do so by Main)
+2. DeckManager deals one card to the player and one card to the AI
+3. Player is asked to guess higher or lower, scanner gets input
+4. Reveal the AI's card and get values of both cards and compare: If player guessed correctly (i.e. guess was higher,
+they had 4 and AI had 1), they win, game over. If not, they lose. Game over.*
+
+Internal Process (Without the AI):
+1. DeckManager creates and fills deck of cards (Function called in Main/Told to do so by Main)
+2. DeckManager deals one card to the player and one card to a variable in Main
+3. Player is asked to guess higher or lower, scanner gets input
+4. Get card values of both cards and compare: If player guessed correctly (i.e. guess was higher, they had 4 and Main had 1),
+they win, game over*. If not, they lose. Game over.*
+
+* Could do a points system to keep the game going, this is just the most straightforward thing
+
+Difference between these two methods is one uses the AI class, and one pushes the process of the AI class into Main. This
+only works if we're assuming the game works how I think it works, which it very well might not.
