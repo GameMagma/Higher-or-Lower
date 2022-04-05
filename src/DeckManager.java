@@ -9,7 +9,7 @@ public abstract class DeckManager {
      * The deck both the player and AI player uses. Each card has a name and a value you can access.
      * @see Card
      */
-    public static Stack<Card> deck = new Stack<Card>();
+    private final static Stack<Card> deck = new Stack<Card>();
 
     /**
      * NOTE: This MUST be called before you do anything with the deck.
@@ -44,46 +44,37 @@ public abstract class DeckManager {
         }
     }
 
-    /** Shuffles the deck */
-    public static void shuffle() { Collections.shuffle(deck); }
+    /** Resets the deck by wiping it and then running {@link #init} again */
+    public static void reset() {
+        deck.clear();
+        DeckManager.init();
+    }
 
     /** Deals 1 card and removes it from the deck */
     public static Card deal() { return deck.pop(); }
 
-    /** Resets the deck by wiping it and then running {@link #init} again */
-    public static void reset() {
-        deck.removeAll(deck);
-        DeckManager.init();
+    /** Shuffles the deck */
+    public static void shuffle() { Collections.shuffle(deck); }
+
+    public static int getDeckSize() { return deck.size(); }
+
+    public static boolean isDeckEmpty() { return deck.isEmpty(); }
+
+    /**
+     * Returns a String of general info about the deck stack. Mostly used just for debugging
+     * @return a string of the following values: stack size (how many cards are currently in it), if it's empty, next 2 cards
+     */
+    public static String getInfo() {
+        return "Stack Size: " + deck.size() +
+                "\nIsEmpty: " + deck.isEmpty() +
+                "\nNext two Cards: " + deck.peek() +
+                " AND " + deck.toArray()[1];
     }
 
-    // Originally this was it's own class, outside of DeckManager. But since Main only uses it once and it makes more sense
+    // Originally this was its own class, outside DeckManager. But since Main only uses it once, and it makes more sense
     // as a subclass of DeckManager, I figured it would be fine to put it in here
     /**
      * Card containing name (i.e. "7 of Diamonds") and value (i.e. "7 of Diamonds" would have a value of 7)
      */
-    public static record Card(String name, int value) {
-
-        /**
-         * @return The instance itself
-         */
-        public Card getCard() { return this; }
-
-        /**
-         * @return Name of the card; i.e. "7 of Diamonds", "King of Hearts
-         */
-        public String getName() { return name; }
-
-        /**
-         * @return Numerical value of the card; "7 of Diamonds" = 7, King of Hearts = 13"
-         */
-        public int getValue() { return value; } // Ace = 1, Jack = 11, Queen = 12, King = 13
-
-        @Override
-        public String toString() {
-            return "DeckManager.Card{" +
-                    "name='" + name + '\'' +
-                    ", value=" + value +
-                    '}';
-        }
-    }
+    public record Card(String name, int value) { }
 }
