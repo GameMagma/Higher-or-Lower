@@ -14,7 +14,7 @@ public abstract class DeckManager {
     /**
      * NOTE: This MUST be called before you do anything with the deck.
      * Initializes the {@link #deck} stack: Iterates through each suit (hearts, clubs, spades, diamonds) and each
-     * possible value (1-13 inclusive), creating a {@link Card} instance for each possible card and putting them into {@link #deck}.
+     * possible value (1-13 inclusive), creating a {@link Card} instance for each possible card and putting them into deck.
      */
     public static void init() {
         String suitName, valueName; // Name of the suit of the card; name of the value ("Ace, Jack, Queen, King")
@@ -50,19 +50,19 @@ public abstract class DeckManager {
         DeckManager.init();
     }
 
-    /** Deals 1 card and removes it from the deck */
+    /** Deals 1 card and removes it from the {@link #deck} */
     public static Card deal() { return deck.pop(); }
 
-    /** Shuffles the deck */
     public static void shuffle() { Collections.shuffle(deck); }
 
     public static int getDeckSize() { return deck.size(); }
 
+    /** @return the value of {@code deck.isEmpty()} */
     public static boolean isDeckEmpty() { return deck.isEmpty(); }
 
     /**
      * Returns a String of general info about the deck stack. Mostly used just for debugging
-     * @return a string of the following values: stack size (how many cards are currently in it), if it's empty, next 2 cards
+     * @return a String of the following values: stack size (how many cards are currently in it), if it's empty, next 2 cards
      */
     public static String getInfo() {
         return "Stack Size: " + deck.size() +
