@@ -92,6 +92,13 @@ public abstract class GameManager {
      */
     public static void modeTwoPlayerAI() {
         System.out.println("\nTwo Player (AI) mode selected");
+
+        DeckManager.init(); // Fills the deck with cards - you absolutely NEED to call this before doing anything with the deck
+
+        String input; // Holds string inputs
+
+        int playerWin = 0, playerLose = 0; // How many times the player has won, how many times they've lost
+        int aiWin = 0, aiLose = 0; // Same as above, but AI
     }
 
     /**
@@ -99,14 +106,5 @@ public abstract class GameManager {
      */
     public static void modeTwoPlayerPerson() {
         System.out.println("\nTwo Player (Person) mode selected");
-    }
-
-    /**
-     * Closes any open scanners, empties any used variables. Destroys the class.
-     */
-    public static void destroy() {
-        sc.close();
-        playerCard = null;
-        aiCard = null;
     }
 }
