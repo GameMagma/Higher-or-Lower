@@ -20,13 +20,12 @@ public abstract class Util {
 
     public static class Styles {
         public static final int BOLD = 1;
-        public static final int DIM = 2;
+        public static final int DIM = 2;       // Doesn't seem to do anything
         public static final int ITALIC = 3;
         public static final int UNDERLINED = 4;
-        public static final int BLINKING = 5;
-//        public static final int UNKNOWN = 6; // Doesn't seem to do anything
-        public static final int REVERSE = 7; // Highlights it, doesn't do reverse
-        public static final int INVISIBLE = 8;
+        public static final int BLINKING = 5;  // Doesn't seem to do anything
+        public static final int REVERSE = 7;   // Highlights it, doesn't reverse
+        public static final int INVISIBLE = 8; // Doesn't seem to do anything
     }
 
     /**
@@ -34,7 +33,8 @@ public abstract class Util {
      * with the style you're looking for (find known style options in {@link Styles}), and STRING with the string you're looking
      * to modify.
      * @param s string you want to modify
-     * @param style number that corresponds to the style you want. All known style numbers are in Styles
+     * @param style number that corresponds to the style you want. All known style numbers are in {@link Styles}, but you can
+     *              try any int you want to see if it does something
      * @return styled string
      * @see <a href="stackoverflow.com/a/42449998">Stack Overflow Question</a>
      */
